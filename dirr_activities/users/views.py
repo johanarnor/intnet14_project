@@ -9,11 +9,11 @@ from django.contrib.auth import login
 
 
 def login_view(request):
-    #if request.user.is_authenticated():
-        #return HttpResponseRedirect(reverse('main:main'))
-    #else:
-    form = LoginForm()
-    dictionary = {'form': form}
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('main:main'))
+    else:
+        form = LoginForm()
+        dictionary = {'form': form}
 
     return render(request, 'users/login.html', dictionary)
 
