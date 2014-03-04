@@ -8,7 +8,7 @@ from django.contrib.auth import logout
 from django.contrib.auth import login
 
 
-def login(request):
+def login_view(request):
     #if request.user.is_authenticated():
         #return HttpResponseRedirect(reverse('main:main'))
     #else:
