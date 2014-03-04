@@ -11,10 +11,9 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(), max_length=128, label="Password")
 
     def __init__(self, *args, **kwargs):
-        next = kwargs.pop('next')
         super(LoginForm, self).__init__(*args, **kwargs)
 
         self.helper = FormHelper()
         self.helper.form_method = 'POST'
-        self.helper.form_action = reverse('users:authenticate', args=(next,))
+        self.helper.form_action = reverse('users:authenticate')
         self.helper.add_input(Submit('login', 'Login', css_class='btn btn-default'))

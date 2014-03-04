@@ -12,22 +12,23 @@ def login(request):
     #if request.user.is_authenticated():
         #return HttpResponseRedirect(reverse('main:main'))
     #else:
-    next_url = "?next=/main/"
-    form = LoginForm(next=next_url)
-    dictionary = {'form': form, 'next': next_url}
+    form = LoginForm()
+    dictionary = {'form': form}
 
-    return render('users/login.html', dictionary)
+    return render(request, 'users/login.html', dictionary)
 
 
-def authenticate_view(request, next_url):
+def authenticate_view(request):
     user_username = request.POST['username']
     user_password = request.POST['password']
     user = authenticate(username=user_username, password=user_password)
     if user is not None:
         login(request, user)
-        return HttpResponseRedirect(next_url)
+        print 'logging in...'
+        return HttpResponseRedirect('main:main')
     else:
-        return HttpResponseRedirect('/login/failed?next=' + next_url)
+        print 'not logging in...'
+        return HttpResponseRedirect('users:login')
 
 
 def logout_view(request):
