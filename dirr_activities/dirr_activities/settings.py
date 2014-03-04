@@ -32,6 +32,7 @@ AUTH_USER_MODEL = 'users.DirrUser'
 
 INSTALLED_APPS = (
     'users',
+    'main',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

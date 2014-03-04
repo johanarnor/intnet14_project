@@ -25,10 +25,10 @@ def authenticate_view(request):
     if user is not None:
         login(request, user)
         print 'logging in...'
-        return HttpResponseRedirect('main:main')
+        return HttpResponseRedirect(reverse('main:main'))
     else:
         print 'not logging in...'
-        return HttpResponseRedirect('users:login')
+        return HttpResponseRedirect(reverse('users:login'))
 
 
 def logout_view(request):
