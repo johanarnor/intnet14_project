@@ -13,7 +13,11 @@ def login_view(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect(reverse('main:main'))
     else:
-        form = LoginForm()
+        if 'next' in request.GET:
+            next_url = request.GET['next']
+        else:
+            next_url = ''
+        form = LoginForm(next_url=next_url)
         dictionary = {'form': form}
 
     return render(request, 'users/login.html', dictionary)
@@ -26,7 +30,7 @@ def authenticate_view(request):
     if user is not None:
         login(request, user)
         print 'logging in...'
-        return HttpResponseRedirect(reverse('main:main'))
+        return HttpResponseRedirect(request.POST['next_url'])
     else:
         print 'not logging in...'
         return HttpResponseRedirect(reverse('users:login'))
@@ -54,6 +58,8 @@ def sign_up_view(request):
                 user.is_staff = False
                 user.is_superuser = False
                 user.save()
+                user.authenticate(form.cleaned_data['username'], form.cleaned_data['password1'])
+                login(request, user)
         else:
             dictionary = {'form': form, 'pw': 'Some fields were left blank'}
             return render(request, 'users/sign_up.html', dictionary)
