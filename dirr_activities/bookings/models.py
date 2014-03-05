@@ -17,7 +17,7 @@ class Booking(models.Model):
     paid = models.DateTimeField(null=True)
 
 
-class BookingOptions(models.Model):
+class BookingOption(models.Model):
 
     def __unicode__(self):
         return unicode(self.feature_option)
