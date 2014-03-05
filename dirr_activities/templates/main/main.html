@@ -8,7 +8,7 @@
     <h3>Aktiviteter</h3>
     <dl>
     {% for activity in activities %}
-        <a href="/hej" class="list-group-item"> <dt>{{ activity.label }}</dt>
+        <a href="{% url 'activities:view_activity' activity.pk %}" class="list-group-item"> <dt>{{ activity.label }}</dt>
         <dd>{{activity.description}}</dd></a>
     {% endfor %}
     </dl>

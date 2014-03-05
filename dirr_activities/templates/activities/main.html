@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h3 class="text-center"> {{activity.label}} </h3>
+    <p>{{activity.description}}</p>
+
+    <select class="form-control">
+        {% for feature in features %}
+
+        <option> {{ feature.feature }} </option>
+
+        {% endfor %}
+    </select>
+
+</div>
+
+{% endblock %}
