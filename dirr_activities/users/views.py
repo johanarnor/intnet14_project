@@ -16,7 +16,7 @@ def login_view(request):
         if 'next' in request.GET:
             next_url = request.GET['next']
         else:
-            next_url = ''
+            next_url = '/'
         form = LoginForm(next_url=next_url)
         dictionary = {'form': form}
 
