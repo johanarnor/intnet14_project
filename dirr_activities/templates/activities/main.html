@@ -5,17 +5,18 @@
 {% block content %}
 
 <div class="container">
-    <h3 class="text-center"> {{activity.label}} </h3>
-    <p>{{activity.description}}</p>
+    <h2 class="text-center"> {{activity.label}} </h2>
+    <p class="text-center">{{activity.description}}</p>
 
-    <select class="form-control">
-        {% for feature in features %}
-
-        <option> {{ feature.feature }} </option>
-
-        {% endfor %}
-    </select>
-
+    {% for feature in features %}
+        <h4>{{ feature.feature }}</h4>
+        <select class="form-control">
+            <option value="">Välj ett alternativ</option>
+            {% for option in feature.featureoption_set.all %}
+                <option> {{ option.option }} </option>
+            {% endfor %}
+        </select>
+    {% endfor %}
 </div>
 
 {% endblock %}
