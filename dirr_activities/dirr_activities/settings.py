@@ -13,7 +13,7 @@ import os
 from unipath import Path
 from sys import path
 
-SITE_ROOT = Path(__file__).ancestor(3)
+SITE_ROOT = Path(__file__).ancestor(2)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 INTNET_ROOT = SITE_ROOT.child('dirr_activities')
 
@@ -37,15 +37,15 @@ AUTH_USER_MODEL = 'users.DirrUser'
 # Application definition
 
 INSTALLED_APPS = (
-    'users',
-    'main',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms'
+    'crispy_forms',
+    'users',
+    'main',
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
