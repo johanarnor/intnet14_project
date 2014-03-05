@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'users',
     'main',
     'activities',
+    'bookings',
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
