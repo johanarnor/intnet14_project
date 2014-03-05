@@ -55,12 +55,7 @@
                 </div>
                 <div class="panel-body">
                     <h3>{{ current_booking.activity_date }}</h3>
-                    {% if current_booking.paid == True %}
-                    <h3>Betalat: {{ current_booking.amount }} kr</h3>
-                    {% endif %}
-                    {% if current_booking.paid == False %}
-                    <h3>Att betala: {{ current_booking.amount }} kr</h3>
-                    {% endif %}
+                    <h3>Pris: {{ current_booking.amount }} kr</h3>
                 </div>
             </div>
         </div>
